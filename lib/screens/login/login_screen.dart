@@ -12,12 +12,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
 
   final TextEditingController passController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  //final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
+
+  bool _showPass = true;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +69,17 @@ class LoginScreen extends StatelessWidget {
                   RoundedPasswordField(
                     enabled: !userManager.loading,
                     controller: passController,
+                    obscureText: _showPass,
                     validator: (pass) {
                       if (pass.isEmpty || pass.length < 6) {
                         return 'Senha Invalida';
                       }
                       return null;
+                    },
+                    onPressed: () {
+                      setState(() {
+                        _showPass = !_showPass;
+                      });
                     },
                   ),
                   RoundedButton(

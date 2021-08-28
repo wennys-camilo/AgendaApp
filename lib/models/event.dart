@@ -58,7 +58,7 @@ class Event extends ChangeNotifier {
         'important': important,
       },
     );
-    loading = true;
+    loading = false;
   }
 
   Event.fromMap(Map<String, dynamic> map) {
