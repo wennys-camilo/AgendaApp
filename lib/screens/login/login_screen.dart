@@ -5,8 +5,8 @@ import 'package:agendaapp/screens/HomePage.dart';
 import 'package:agendaapp/screens/login/components/already_have_an_account_acheck.dart';
 
 import 'package:agendaapp/screens/login/components/rounded_button.dart';
-import 'package:agendaapp/screens/login/components/rounded_input_field.dart';
-import 'package:agendaapp/screens/login/components/rounded_password_field.dart';
+
+import 'package:agendaapp/screens/login/components/rounded_input.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:provider/provider.dart';
@@ -55,9 +55,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: size.height * 0.35,
                   ),
                   SizedBox(height: size.height * 0.03),
-                  RoundedInputField(
-                    hintText: "Email",
+                  RoundedInput(
+                    hintText: 'Email',
                     controller: emailController,
+                    iconData: Icons.person,
                     enabled: !userManager.loading,
                     keyboardType: TextInputType.emailAddress,
                     validator: (email) {
@@ -66,10 +67,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     //onChanged: (value) {},
                   ),
-                  RoundedPasswordField(
+                  RoundedInput(
                     enabled: !userManager.loading,
                     controller: passController,
                     obscureText: _showPass,
+                    hintText: 'Senha',
+                    isInputSenha: true,
+                    iconData: Icons.lock,
                     validator: (pass) {
                       if (pass.isEmpty || pass.length < 6) {
                         return 'Senha Invalida';

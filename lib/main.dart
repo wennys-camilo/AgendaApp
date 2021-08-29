@@ -1,6 +1,7 @@
 import 'package:agendaapp/models/event_manager.dart';
 import 'package:agendaapp/models/user_maneger.dart';
 import 'package:agendaapp/routes/routes.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

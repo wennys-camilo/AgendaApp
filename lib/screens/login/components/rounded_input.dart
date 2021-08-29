@@ -1,20 +1,28 @@
 import 'package:agendaapp/screens/login/components/text_field_container.dart';
 import 'package:flutter/material.dart';
 
-class RoundedPasswordField extends StatelessWidget {
+class RoundedInput extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final FormFieldValidator<String> validator;
   final TextEditingController controller;
   final bool enabled;
   final bool obscureText;
   final Function onPressed;
-  const RoundedPasswordField(
+  final String hintText;
+  final IconData iconData;
+  final bool isInputSenha;
+  final TextInputType keyboardType;
+  const RoundedInput(
       {Key key,
       this.onChanged,
       this.validator,
       this.enabled,
       this.controller,
-      this.obscureText,
+      this.obscureText = false,
+      this.hintText,
+      this.iconData,
+      this.isInputSenha = false,
+      this.keyboardType,
       this.onPressed})
       : super(key: key);
 
@@ -27,19 +35,24 @@ class RoundedPasswordField extends StatelessWidget {
         autocorrect: false,
         cursorColor: Theme.of(context).primaryColor,
         validator: validator,
+        keyboardType: keyboardType,
         enabled: enabled,
         controller: controller,
         decoration: InputDecoration(
-          hintText: "Senha",
+          hintText: hintText,
           icon: Icon(
-            Icons.lock,
+            iconData,
             color: Theme.of(context).primaryColor,
           ),
-          suffixIcon: IconButton(
-            icon: Icon(Icons.visibility),
-            color: Theme.of(context).primaryColor,
-            onPressed: onPressed,
-          ),
+          suffixIcon: isInputSenha
+              ? IconButton(
+                  icon: Icon(Icons.visibility),
+                  color: Theme.of(context).primaryColor,
+                  onPressed: onPressed,
+                )
+              : Container(
+                  width: 0,
+                ),
           border: InputBorder.none,
         ),
       ),
