@@ -153,26 +153,40 @@ class _CardTileState extends State<CardTile> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.event.title,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 15,
-                                ),
-                                maxLines: (_cardBool == true) ? 2 : 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Text(
-                                  widget.event.description,
-                                  maxLines: (_cardBool == true) ? 20 : 1,
-                                  style: TextStyle(
-                                    color: Color(0xff333652),
-                                    fontSize: 13,
+                              Row(
+                                children: [
+                                  Text(
+                                    widget.event.title,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 15,
+                                    ),
+                                    maxLines: (_cardBool == true) ? 2 : 1,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
+                                  Spacer(),
+                                  //TODO IMPLEMENTAR EDITAR EVENTO
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.edit,
+                                      size: 20,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pushNamed(
+                                          '/editevent',
+                                          arguments: widget.event);
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                widget.event.description,
+                                maxLines: (_cardBool == true) ? 20 : 1,
+                                style: TextStyle(
+                                  color: Color(0xff333652),
+                                  fontSize: 13,
                                 ),
+                                overflow: TextOverflow.ellipsis,
                               ),
                               widget.event.important == true
                                   ? Padding(

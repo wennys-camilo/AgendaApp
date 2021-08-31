@@ -1,5 +1,7 @@
+import 'package:agendaapp/models/event.dart';
 import 'package:agendaapp/screens/HomePage.dart';
 import 'package:agendaapp/screens/events/add_event.dart';
+import 'package:agendaapp/screens/events/components/edit_event.dart';
 import 'package:agendaapp/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,11 @@ abstract class Routes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => AddEvent(),
+        );
+      case '/editevent':
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => EditEvent(settings.arguments as Event),
         );
 
       case '/login':

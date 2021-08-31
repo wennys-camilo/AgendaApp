@@ -51,6 +51,11 @@ class EventManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> editEvent(Event event) async {
+    firebaseFirestore.collection('events').doc(event.id).update(event.toMap());
+    notifyListeners();
+  }
+
   void add(Event event) {
     firebaseFirestore.collection('events').add(event.toMap());
     notifyListeners();
