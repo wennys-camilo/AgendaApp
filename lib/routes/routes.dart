@@ -1,7 +1,7 @@
 import 'package:agendaapp/models/event.dart';
 import 'package:agendaapp/screens/HomePage.dart';
 import 'package:agendaapp/screens/events/add_event.dart';
-import 'package:agendaapp/screens/events/components/edit_event.dart';
+import 'package:agendaapp/screens/events/edit_event.dart';
 import 'package:agendaapp/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
